@@ -5,6 +5,7 @@
   margin-top: 60px;
   display: flex;
   justify-content: center;
+  margin-bottom: 60px;
 }
 
 .container {
@@ -63,7 +64,7 @@
         align-items: center;
         margin: 10px 0;
 
-        h2 {
+        h3 {
           margin: 0;
         }
       }
@@ -127,7 +128,7 @@
           display: flex;
           width: 100%;
           align-items: center;
-          background-color: #dd2380;
+          background-color: #fa439e;
           color: white; 
           border: none; 
           padding: 10px 20px;
@@ -154,8 +155,8 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
-    // margin: 40px;
     margin-left: 80px;
+    padding-top: 0;
 
     h1 {
       margin: 0 auto;

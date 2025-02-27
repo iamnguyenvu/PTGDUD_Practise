@@ -1,12 +1,13 @@
 .wrapper {
     width: 100%;
-    max-height: 200px;
+    max-height: 500px;
     box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
     background-color: rgb(30, 35, 41);
     color: white;
-    margin-top: 60px;
     display: flex;
     justify-content: center;
+    border-radius: 4px;
+    padding: 40px;
   }
   
   .container {
@@ -14,7 +15,8 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 1000px;
+    max-width: 1200px;
+    width: 1200px;
   }
   
   .inner {
@@ -23,4 +25,128 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .left-section {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 500px;
+    width: 500px;
+
+    .about-section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 100px;
+
+      h4, p, form {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+
+      form {
+        width: 100%;
+
+        input, button {
+          border: none;
+        }
+
+        input {
+          padding: 0 16px;
+          border: 1px solid #e8e8e8;
+          width: 70%;
+          height: 34px;
+          border-radius: 6px;
+        }
+
+        button {
+          margin: 10px;
+          height: 38px;
+          width: 14%;
+          border-radius: 6px;
+          background-color: #fa439e;
+          color: white;
+        }
+      }
+    }
+
+    .infor-section {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        height: 40px;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 100;
+        font-size: 14px;
+  
+        &:hover {
+          color: #1890ff;
+        }
+      }
+    }
+  }
+
+  .center-section {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .learnmore-section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+
+    .shop-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h4, a {
+      margin: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      font-size: 14px;
+
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
+  .right-section {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    h4, a {
+      margin: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      font-size: 14px;
+
+      &:hover {
+        color: #1890ff;
+      }
+    }
   }

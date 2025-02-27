@@ -16,7 +16,7 @@ function Content() {
                   <div className={cx("filter-group")}>
                     <div className={cx("filter")}>
                       <img src="../src/assets/list_filter.png" alt="" />
-                      <h2>FILTERS</h2>
+                      <h3>FILTERS</h3>
                     </div>
 
                     <div className={cx("type-group")}>
