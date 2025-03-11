@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import Content from '../components/Content'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import RecipeBox from '../components/RecipeBox'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,7 +14,8 @@ function App() {
     <>
       <div>
         <Header />
-        <Content />
+        {/* <Content /> */}
+        <RecipeBox />
         <Footer />
       </div>
     </>

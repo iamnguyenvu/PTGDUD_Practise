@@ -11,3 +11,4 @@ Currently, two official plugins are available:
 ![alt text](./src/assets/image.png)
 
 ![alt text](image.png)
+![alt text](image-1.png)

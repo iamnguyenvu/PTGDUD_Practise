@@ -4,6 +4,44 @@ import styles from "./Content.module.scss";
 
 const cx = classnames.bind(styles);
 
+const leftFilterItem = [
+  { img: "../src/assets/checkbox.png", name: "Pan - fried" },
+  { img: "../src/assets/checkboxpink.png", name: "Grilled" },
+  { img: "", name: "Sauteed" },
+  { img: "", name: "Steamed" },
+];
+const rightFilterItem = ["Stir - fried", "Roasted", "Baked", "Steved"];
+
+const suggestions = [
+  { name: "Sweet Cake" },
+  { name: "Black Cake", color: "violet" },
+  { name: "Pozole Verde" },
+  { name: "Healthy Food", color: "saphire" },
+];
+
+const ratingOptions = [
+  {
+    checkbox: "../src/assets/checkbox.png",
+    rating: "../src/assets/rating_5.png",
+  },
+  {
+    checkbox: "../src/assets/checkbox.png",
+    rating: "../src/assets/rating_4.png",
+  },
+  {
+    checkbox: "../src/assets/checkboxpink.png",
+    rating: "../src/assets/rating_3.png",
+  },
+  {
+    checkbox: "../src/assets/checkboxpink.png",
+    rating: "../src/assets/rating_2.png",
+  },
+  {
+    checkbox: "../src/assets/checkboxpink.png",
+    rating: "../src/assets/rating_1.png",
+  },
+];
+
 function Content() {
   return (
     <>
@@ -26,40 +64,25 @@ function Content() {
 
                       <div className={cx("type-option-group")}>
                         <div className={cx("left-type-option")}>
-                          <div className={cx("type-item")}>
-                            <img src="../src/assets/checkbox.png" alt="" />
-                            <p>Pan - fried</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <img src="../src/assets/checkboxpink.png" alt="" />
-                            <p>Grilled</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Sauteed</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Steamed</p>
-                          </div>
+                          {leftFilterItem.map((item, index) => (
+                            <div className={cx("type-item")} key={index}>
+                              {item.img !== "" ? (
+                                <img src={item.img} alt="" />
+                              ) : (
+                                <input type="checkbox" />
+                              )}
+                              <p>{item.name}</p>
+                            </div>
+                          ))}
                         </div>
+
                         <div className={cx("right-type-option")}>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Stir - fried</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Roasted</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Baked</p>
-                          </div>
-                          <div className={cx("type-item")}>
-                            <input type="checkbox" name="" id="" />
-                            <p>Steaved</p>
-                          </div>
+                          {rightFilterItem.map((item, index) => (
+                            <div className={cx("type-item")} key={index}>
+                              <input type="checkbox" />
+                              <p>{item}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -76,26 +99,12 @@ function Content() {
                     <div className={cx("time-title")}>
                       <h4>Rating</h4>
                     </div>
-                    <div>
-                      <img src="../src/assets/checkbox.png" alt="" />
-                      <img src="../src/assets/rating_5.png" alt="" />
-                    </div>
-                    <div>
-                      <img src="../src/assets/checkbox.png" alt="" />
-                      <img src="../src/assets/rating_4.png" alt="" />
-                    </div>
-                    <div>
-                      <img src="../src/assets/checkboxpink.png" alt="" />
-                      <img src="../src/assets/rating_3.png" alt="" />
-                    </div>
-                    <div>
-                      <img src="../src/assets/checkboxpink.png" alt="" />
-                      <img src="../src/assets/rating_2.png" alt="" />
-                    </div>
-                    <div>
-                      <img src="../src/assets/checkboxpink.png" alt="" />
-                      <img src="../src/assets/rating_1.png" alt="" />
-                    </div>
+                    {ratingOptions.map((e) => (
+                      <div>
+                        <img src={e.checkbox} alt="" />
+                        <img src={e.rating} alt="" />
+                      </div>
+                    ))}
                   </div>
 
                   <div className={cx("button-section")}>
@@ -109,10 +118,17 @@ function Content() {
                 <img src="../src/assets/nothing.png" alt="" />
                 <p>We have all your independence Day sweet covered.</p>
                 <div className={cx("tag-group")}>
-                  <div className={cx("tag")}>Sweet Cake</div>
-                  <div className={cx("tag", "tag-violet")}>Black Cake</div>
-                  <div className={cx("tag")}>Pozole Verde</div>
-                  <div className={cx("tag", "tag-saphire")}>Healthy Food</div>
+                  {suggestions.map((element, index) => (
+                    <div
+                      key={index}
+                      className={cx(
+                        "tag",
+                        element.color && `tag-${element.color}`
+                      )}
+                    >
+                      {element.name}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

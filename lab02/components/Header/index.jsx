@@ -4,6 +4,8 @@ import styles from "./Header.module.scss";
 
 const cx = classnames.bind(styles);
 
+const navItem = ["What to cook", "Recipes", "Ingredient", "Occasions", "About Us"]
+
 function Header() {
   return (
     <header className={cx("wrapper")}>
@@ -28,21 +30,11 @@ function Header() {
 
           <nav className={cx("nav-section")}>
             <ul className={cx("nav-list")}>
-              <li className={cx("nav-item")}>
-                <a href="#">What to cook</a>
-              </li>
-              <li className={cx("nav-item")}>
-                <a href="#">Recipes</a>
-              </li>
-              <li className={cx("nav-item")}>
-                <a href="#">Ingredients</a>
-              </li>
-              <li className={cx("nav-item")}>
-                <a href="#">Occasions</a>
-              </li>
-              <li className={cx("nav-item")}>
-                <a href="#">About Us</a>
-              </li>
+              {navItem.map((item, index) => (
+                <li className={cx("nav-item")} key={index}>
+                  <a href="#">{item}</a>
+                </li>
+              ))}
             </ul>
           </nav>
           <div className={cx("user-section")}>
