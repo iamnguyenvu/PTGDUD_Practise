@@ -16,6 +16,7 @@ function App() {
         <Header />
         {/* <Content /> */}
         <RecipeBox />
+        {/* <Outlet /> */}
         <Footer />
       </div>
     </>

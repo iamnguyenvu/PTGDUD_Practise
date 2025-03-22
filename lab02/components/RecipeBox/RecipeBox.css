@@ -1,4 +1,6 @@
-.wrapper {
+@import "tailwindcss";
+
+/* .wrapper {
     width: 100%;
     box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
     background-color: white;
@@ -6,7 +8,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 60px;
-  }
+  } */
   
   .container {
     display: flex;

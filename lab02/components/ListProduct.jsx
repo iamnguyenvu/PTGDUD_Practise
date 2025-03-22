@@ -67,11 +67,7 @@ function ListProduct() {
     borderTopRightRadius: "12px",
     transition: "all 0.3s ease",
   };
-// Chia danh sách thành các nhóm 2 phần tử
-// const rows = Array.from({ length: Math.ceil(recipeItem.length / 2) }, (_, i) => 
-//     recipeItem.slice(i * 2, i * 2 + 2)
-// );
-  // Chia danh sách thành các nhóm 4 phần tử
+  
   const rows = Array.from({ length: Math.ceil(recipeItem.length / 4) }, (_, i) => 
     recipeItem.slice(i * 4, i * 4 + 4)
   );

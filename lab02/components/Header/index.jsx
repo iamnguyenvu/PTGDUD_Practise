@@ -4,7 +4,13 @@ import styles from "./Header.module.scss";
 
 const cx = classnames.bind(styles);
 
-const navItem = ["What to cook", "Recipes", "Ingredient", "Occasions", "About Us"]
+const navItem = [
+  "What to cook",
+  "Recipes",
+  "Ingredient",
+  "Occasions",
+  "About Us",
+];
 
 function Header() {
   return (
@@ -38,10 +44,21 @@ function Header() {
             </ul>
           </nav>
           <div className={cx("user-section")}>
-            <div className={cx("recipe-box")}>
-              <img src="/src/assets/check.png" alt="Recipe Box" />
-              <p>Your Recipe Box</p>
-            </div>
+            <button
+              className="recipe-box"
+              style={{
+                padding: 0,
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
+              
+            >
+              <div className={cx("recipe-box")} style={{margin: 0}}>
+                <img src="/src/assets/check.png" alt="Recipe Box" />
+                <p>Your Recipe Box</p>
+              </div>
+            </button>
             <button className={cx("avatar-button")}>
               <img src="/src/assets/avatar.png" alt="User Avatar" />
             </button>

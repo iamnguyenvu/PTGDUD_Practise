@@ -1,7 +1,6 @@
 import React from "react";
 import "./RecipeBox.css";
 import ListProduct from "../ListProduct";
-import { Card, Row, Col, Container } from "react-bootstrap";
 
 function RecipeBox() {
   const user = {
@@ -9,9 +8,10 @@ function RecipeBox() {
     name: "Emma Gonzalez",
     img: "./src/assets/Lab_02_b/avatar.png",
     email: "",
-    decription: ["Emma Gonzalez is a deputy editor at Chefify, bringing her expertise as a former cooking editor at The Los Angeles Times.",
+    description: [
+      "Emma Gonzalez is a deputy editor at Chefify, bringing her expertise as a former cooking editor at The Los Angeles Times.",
       "She is also an accomplished author, contributing to numerous cookbooks and food publications. Originally from East Los",
-      "Angeles, Emma now resides in New York City, where she explores a wide range of culinary delights."
+      "Angeles, Emma now resides in New York City, where she explores a wide range of culinary delights.",
     ],
     subscribeCount: 6532,
   };
@@ -21,13 +21,25 @@ function RecipeBox() {
   const [selectedTab, setSelectedTab] = React.useState(0);
 
   return (
-    <div className="wrapper" style={{ padding: "20px", width: "100%" }}>
+    <div
+      // className="wrapper"
+      className="wrapper flex justify-center items-center my-16 p-5 w-full"
+      // style={{
+      //   padding: "20px",
+      //   width: "100%",
+      //   display: "flex",
+      //   justifyContent: "center",
+      //   margin: "60px 0",
+      // }}
+    >
       <div
         className="container"
         style={{
           display: "flex",
           flexDirection: "column",
           width: "100%",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <div className="recipe-box" style={{ marginBottom: "40px" }}>
@@ -48,12 +60,12 @@ function RecipeBox() {
                 padding: "10px",
               }}
             >
-              <div className="decription">
-                {user.decription.map((item, index) => (
+              <div className="description">
+                {user.description.map((item, index) => (
                   <div key={index}>{item}</div>
                 ))}
               </div>
-              
+
               <div className="subcribe-box" style={{ display: "flex" }}>
                 <p style={{ color: "#fa439e", marginRight: 20 }}>
                   {user.subscribeCount} Subscribes
@@ -71,6 +83,7 @@ function RecipeBox() {
                     backgroundColor: "#fa439e",
                     color: "white",
                     border: "none",
+                    cursor: "pointer",
                   }}
                 >
                   Share
@@ -115,7 +128,6 @@ function RecipeBox() {
               display: "flex",
               justifyContent: "center",
               width: "100%",
-              width: "1500px",
             }}
           />
         </div>
