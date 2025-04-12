@@ -1,11 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import {
-  FaChartBar,
-  FaProjectDiagram,
-  FaUsers,
-  FaCommentDots,
-  FaCogs,
-} from "react-icons/fa";
+import { FaChartBar, FaProjectDiagram, FaUsers, FaCommentDots, FaCogs, } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import logo from "../assets/logo.png";
 import available from "../assets/available.png";
@@ -26,7 +20,6 @@ export default function Sidebar() {
     <aside className="w-64 bg-white shadow-md h-full-screen p-4">
       <div className="flex items-center space-x-2 mb-6">
         <img src={logo} alt="Logo" className="w-24 h-10" />
-        <span className="text-2xl font-bold">Chefify</span>
       </div>
       <ul className="space-y-2">
         {menu.map((item) => (
@@ -36,7 +29,7 @@ export default function Sidebar() {
               className={`flex items-center space-x-2 p-2 rounded hover:bg-pink-100 ${
                 pathname === item.path
                   ? "bg-pink-500 text-white"
-                  : "text-gray-700"
+                  : "text-gray-700" 
               }`}
             >
               <span>{item.icon}</span>

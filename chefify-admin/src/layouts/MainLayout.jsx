@@ -1,13 +1,12 @@
-// src/layouts/MainLayout.jsx
 import Sidebar from '../components/Sidebar'
 import Navbar from '../components/Navbar'
 import { Outlet } from 'react-router-dom'
 
 export default function MainLayout() {
   return (
-    <div className="flex">
+    <div className="grid grid-cols-[auto_1fr] min-h-screen">
       <Sidebar />
-      <div className="flex-1 bg-gray-50 min-h-screen">
+      <div className="bg-gray-50">
         <Navbar />
         <main className="p-6">
           <Outlet />
