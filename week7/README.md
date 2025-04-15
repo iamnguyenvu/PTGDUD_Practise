@@ -9,3 +9,7 @@
 # 3. Router SPA
 ![alt text](assets/3_router_projects.png)
 ![alt text](assets/3_router_teams.png)
+
+# 4. RootLayout SPA
+![alt text](assets/4_rootlayout_projects.png)
+![alt text](assets/4_rootlayout_teams.png)
