@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
-const Modal = ({ isOpen, onClose, item, onSave }) => {
+const Modal = ({ isOpen, onClose, item, onSave, mode = "add" }) => {
   if (!isOpen) return null;
-
+  
+  console.log("Modal opened with mode:", mode, "and item:", item);
+  
   const [editedData, setEditedData] = useState({
-    name: item.name,
-    company: item.company,
-    value: item.value,
-    date: item.date,
-    status: item.status,
+    name: item?.name || '',
+    company: item?.company || '',
+    value: item?.value || '',
+    date: item?.date || new Date().toISOString().split('T')[0],
+    status: item?.status || 'New',
   });
+
+  // Update form data when item changes
+  useEffect(() => {
+    setEditedData({
+      name: item?.name || '',
+      company: item?.company || '',
+      value: item?.value || '',
+      date: item?.date || new Date().toISOString().split('T')[0],
+      status: item?.status || 'New',
+    });
+  }, [item]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,17 +32,28 @@ const Modal = ({ isOpen, onClose, item, onSave }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.put(
-        `https://67d53cb6d2c7857431efc348.mockapi.io/travel-app/api/chefify-admin/${item.id}`,
-        editedData
-      );
+      let response;
+      if (mode === "edit") {
+        // Update existing customer
+        response = await axios.put(
+          `https://67d53cb6d2c7857431efc348.mockapi.io/travel-app/api/chefify-admin/${item.id}`,
+          editedData
+        );
+      } else {
+        // Add new customer
+        response = await axios.post(
+          `https://67d53cb6d2c7857431efc348.mockapi.io/travel-app/api/chefify-admin`,
+          editedData
+        );
+      }
       onSave(response.data); 
       onClose(); 
     } catch (error) {
-      console.error("Error updating item", error);
+      console.error("Error saving item", error);
     }
   };
-const formFields = [
+
+  const formFields = [
     { name: 'name', label: 'Customer Name', type: 'text' },
     { name: 'company', label: 'Company', type: 'text' },
     { name: 'value', label: 'Order Value', type: 'text' },
@@ -39,12 +63,14 @@ const formFields = [
         { value: 'In-progress', label: 'In-progress' },
         { value: 'Completed', label: 'Completed' }
     ] }
-];
+  ];
 
-return (
+  return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/80">
         <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h3 className="text-xl font-bold mb-4">Edit Customer</h3>
+            <h3 className="text-xl font-bold mb-4">
+                {mode === "edit" ? "Edit Customer" : "Add Customer"}
+            </h3>
             
             {formFields.map((field) => (
                 <div className="mb-4" key={field.name}>
@@ -94,7 +120,7 @@ return (
             </div>
         </div>
     </div>
-);
+  );
 };
 
 export default Modal;

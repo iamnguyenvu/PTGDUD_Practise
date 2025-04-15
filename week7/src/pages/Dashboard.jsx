@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import axios from "axios";
 import Modal from "../components/Modal";
+import ImportModal from "../components/ImportModal";
 import TitleWithIcon from "../components/TitleWithIcon";
 import OverviewCard from "../components/OverviewCard";
 import ActionButton from "../components/ActionButton";
@@ -19,6 +20,8 @@ const Dashboard = () => {
   const itemPerPage = 6;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("add"); // "add" or "edit"
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,7 +72,39 @@ const Dashboard = () => {
   };
 
   const handleEditClick = (item) => {
+    console.log("Edit clicked with item:", item);
     setSelectedItem(item);
+    setModalMode("edit");
+    setIsModalOpen(true);
+  };
+
+  const handleButtonClick = (item) => {
+    // Check if the clicked button is the import button
+    if (item.title.toLowerCase().includes('import')) {
+      setIsImportModalOpen(true);
+    }
+    // Handle other button clicks if needed
+  };
+
+  const handleImportFile = () => {
+    // Logic for importing from file
+    console.log("Import from file action triggered");
+    setIsImportModalOpen(false);
+    // You can add additional logic here like opening a file picker
+  };
+
+  const handleAddUser = () => {
+    // Logic for adding a user manually
+    console.log("Add user action triggered");
+    setIsImportModalOpen(false);
+    setSelectedItem({
+      name: '',
+      company: '',
+      value: '',
+      date: new Date().toISOString().split('T')[0],
+      status: 'New'
+    });
+    setModalMode("add");
     setIsModalOpen(true);
   };
 
@@ -104,7 +139,12 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-wrap gap-2">
             {buttonData.map((item, index) => (
-              <ActionButton key={index} item={item} iconMap={iconMap} />
+              <ActionButton 
+                key={index} 
+                item={item} 
+                iconMap={iconMap} 
+                onClick={handleButtonClick}
+              />
             ))}
           </div>
         </div>
@@ -124,18 +164,34 @@ const Dashboard = () => {
 
       {isModalOpen && (
         <Modal
+          key={`modal-${modalMode}-${selectedItem?.id || 'new'}`}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           item={selectedItem}
+          mode={modalMode}
           onSave={(updatedItem) => {
-            setData((prevData) =>
-              prevData.map((item) =>
-                item.id === updatedItem.id ? updatedItem : item
-              )
-            );
+            setData((prevData) => {
+              // If the item has an ID, it means we're updating an existing item
+              if (updatedItem.id) {
+                return prevData.map((item) =>
+                  item.id === updatedItem.id ? updatedItem : item
+                );
+              } 
+              // Otherwise, we're adding a new item
+              else {
+                return [...prevData, updatedItem];
+              }
+            });
           }}
         />
       )}
+
+      <ImportModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onImportFile={handleImportFile}
+        onAddUser={handleAddUser}
+      />
     </div>
   );
 };

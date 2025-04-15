@@ -24,3 +24,7 @@
 
 # 7. Display Edit Modal
 ![alt text](assets/7_modal_edit_display.png)
+
+# 8. Action Add Customer in Import button
+![alt text](assets/8_action.png)
+![alt text](assets/8_adduser.png)

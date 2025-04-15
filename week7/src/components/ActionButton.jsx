@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActionButton = ({ item, iconMap }) => {
+const ActionButton = ({ item, iconMap, onClick }) => {
   return (
     <button
       className={`flex items-center gap-2 ${item.bg} text-pink-600 font-semibold px-4 py-2 rounded-lg shadow-sm`}
@@ -9,6 +9,7 @@ const ActionButton = ({ item, iconMap }) => {
         color: "#FF1493",
         border: "1px solid #FF1493",
       }}
+      onClick={() => onClick && onClick(item)}
     >
       {iconMap[item.icon] || null}
       {item.title}

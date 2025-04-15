@@ -55,7 +55,13 @@ const TableComponent = ({ paginatedData, handleEditClick }) => {
               </td>
               <td className="px-4 py-3 text-center">
                 <button
-                  onClick={() => handleEditClick(item)}
+                  onClick={() => {
+                    console.log("Edit item:", item); // Debug log
+                    handleEditClick({
+                      ...item, 
+                      id: item.id // Explicitly ensure ID is included
+                    });
+                  }}
                   className="text-pink-500 hover:text-pink-700 bg-transparent"
                   style={{ backgroundColor: "transparent" }}
                 >
