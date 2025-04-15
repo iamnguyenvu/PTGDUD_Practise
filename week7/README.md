@@ -21,3 +21,6 @@
 # 6. Get API DataTable - Pagination
 ![alt text](assets/6_api_datatable.png)
 ![alt text](assets/6_api_pagination.png)
+
+# 7. Display Edit Modal
+![alt text](assets/7_modal_edit_display.png)
