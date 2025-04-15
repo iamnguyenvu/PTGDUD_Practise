@@ -23,56 +23,17 @@ const Dashboard = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      setData([
-        {
-          "name": "Elizabeth Lee",
-          "company": "AvatarSystems",
-          "value": "$359",
-          "date": "10/07/2023",
-          "status": "New",
-          "avatar": "https://i.pravatar.cc/40?img=1"
-        },
-        {
-          "name": "Carlos Garcia",
-          "company": "SmoozeShift",
-          "value": "$747",
-          "date": "24/07/2023",
-          "status": "New",
-          "avatar": "https://i.pravatar.cc/40?img=2"
-        },
-        {
-          "name": "Elizabeth Bailey",
-          "company": "Prime Time Telecom",
-          "value": "$564",
-          "date": "08/08/2023",
-          "status": "In-progress",
-          "avatar": "https://i.pravatar.cc/40?img=3"
-        },
-        {
-          "name": "Ryan Brown",
-          "company": "OmniTech Corporation",
-          "value": "$541",
-          "date": "31/08/2023",
-          "status": "In-progress",
-          "avatar": "https://i.pravatar.cc/40?img=4"
-        },
-        {
-          "name": "Ryan Young",
-          "company": "DataStream Inc.",
-          "value": "$769",
-          "date": "01/05/2023",
-          "status": "Completed",
-          "avatar": "https://i.pravatar.cc/40?img=5"
-        },
-        {
-          "name": "Hailey Adams",
-          "company": "FlowRush",
-          "value": "$922",
-          "date": "10/06/2023",
-          "status": "Completed",
-          "avatar": "https://i.pravatar.cc/40?img=6"
-        },
-      ])
+      try {
+        const respone = await axios.get(
+          "https://67d53cb6d2c7857431efc348.mockapi.io/travel-app/api/chefify-admin"
+        );
+        setData(respone.data);
+        setLoading(false);
+        console.log(respone.data);
+      } catch (error) {
+        setLoading(false);
+        setError(error.message);
+      }
       
       try {
         const response = await axios.get(
@@ -121,6 +82,16 @@ const Dashboard = () => {
     if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
   };
+
+  if (loading) {
+    return <div className="text-center text-gray-500">Loading...</div>;
+  }
+  if (error) {
+    return <div className="text-center text-red-500">{error}</div>;
+  }
+  if (data.length === 0) {
+    return <div className="text-center text-gray-500">No data available</div>;
+  }
 
   return (
     <div className="space-y-10 ">

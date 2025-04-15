@@ -17,3 +17,7 @@
 # 5. DataTable - Pagination
 ![alt text](assets/5_datatable.png)
 ![alt text](assets/5_pagination.png)
+
+# 6. Get API DataTable - Pagination
+![alt text](assets/6_api_datatable.png)
+![alt text](assets/6_api_pagination.png)
