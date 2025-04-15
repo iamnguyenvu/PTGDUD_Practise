@@ -13,3 +13,7 @@
 # 4. RootLayout SPA
 ![alt text](assets/4_rootlayout_projects.png)
 ![alt text](assets/4_rootlayout_teams.png)
+
+# 5. DataTable - Pagination
+![alt text](assets/5_datatable.png)
+![alt text](assets/5_pagination.png)
