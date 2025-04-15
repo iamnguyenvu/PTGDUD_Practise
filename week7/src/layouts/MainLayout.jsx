@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Navbar from '../components/Navbar'
 import Dashboard from '../pages/Dashboard'
+import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
   return (
@@ -10,7 +11,7 @@ const MainLayout = () => {
         <div className="bg-gray-50">
             <Navbar />
             <main className="p-6">
-                <Dashboard />
+                <Outlet />
             </main>
         </div>
     </div>

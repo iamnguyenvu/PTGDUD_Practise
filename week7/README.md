@@ -4,4 +4,8 @@
 
 # 2. Get API (Card, Button)
 ![alt text](assets/2_get_api.png)
-![alt text](assets/2_get_api.png)
+![alt text](assets/2_api_evident.png)
+
+# 3. Router SPA
+![alt text](assets/3_router_projects.png)
+![alt text](assets/3_router_teams.png)

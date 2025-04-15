@@ -15,6 +15,8 @@ const menu = [
 ];
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
+
   return (
     <aside className="w-64 bg-white shadow-md h-full-screen p-4">
       <div className="flex items-center space-x-2 mb-6">
@@ -23,12 +25,17 @@ const Sidebar = () => {
       <ul className="space-y-2">
         {menu.map((item) => (
           <li key={item.path}>
-            <div
-              className={`flex items-center space-x-2 p-2 rounded hover:bg-pink-100 text-gray-700`}
+            <Link
+              to={item.path}
+              className={`flex items-center space-x-2 p-2 rounded hover:bg-pink-100 ${
+                pathname === item.path
+                  ? "bg-pink-500 text-white"
+                  : "text-gray-700" 
+              }`}
             >
               <span>{item.icon}</span>
               <span>{item.label}</span>
-            </div>
+            </Link>
           </li>
         ))}
       </ul>
@@ -44,7 +51,7 @@ const Sidebar = () => {
         </button>
       </footer>
     </aside>
-  )
+  );
 }
 
 export default Sidebar
